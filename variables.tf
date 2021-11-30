@@ -14,9 +14,19 @@ variable "project" {
   type        = string
 }
 
-variable "lifecycle_rule_condition_created_before" {
-  description = " A date in the RFC 3339 format YYYY-MM-DD."
+variable "lifecycle_rule_action_type" {
+  description = "The type of the action of this Lifecycle Rule."
   type        = string
+}
+
+variable "lifecycle_rule_action_storage_class" {
+  description = "The target Storage Class of objects affected by this Lifecycle Rule."
+  type        = string
+}
+
+variable "versioning_enabled" {
+  description = "While set to true, versioning is fully enabled for this bucket."
+  type        = bool
 }
 
 variable "retention_policy_retention_period" {
@@ -26,6 +36,34 @@ variable "retention_policy_retention_period" {
 
 variable "logging_log_bucket" {
   description = "The bucket that will receive log objects."
+  type        = string
+}
+
+//optional variables
+variable "force_destroy" {
+  description = "When deleting a bucket, this boolean option will delete all contained objects."
+  type        = bool
+  default     = false
+}
+
+variable "storage_class" {
+  description = "The Storage Class of the new bucket."
+  type        = string
+  default     = "STANDARD"
+}
+
+variable "lifecycle_rule_condition_age" {
+  description = " Minimum age of an object in days to satisfy this condition."
+  type        = number
+}
+
+variable "lifecycle_rule_condition_with_state" {
+  description = "Match to live and/or archived objects."
+  type        = string
+}
+
+variable "lifecycle_rule_condition_created_before" {
+  description = " A date in the RFC 3339 format YYYY-MM-DD."
   type        = string
 }
 
@@ -74,38 +112,6 @@ variable "encryption_default_kms_key_name" {
   type        = string
 }
 
-//optional variables
-variable "force_destroy" {
-  description = "When deleting a bucket, this boolean option will delete all contained objects."
-  type        = bool
-  default     = false
-}
-
-variable "storage_class" {
-  description = "The Storage Class of the new bucket."
-  type        = string
-  default     = "STANDARD"
-}
-
-variable "lifecycle_rule_action_type" {
-  description = "The type of the action of this Lifecycle Rule."
-  type        = string
-}
-
-variable "lifecycle_rule_action_storage_class" {
-  description = "The target Storage Class of objects affected by this Lifecycle Rule."
-  type        = string
-}
-
-variable "lifecycle_rule_condition_age" {
-  description = " Minimum age of an object in days to satisfy this condition."
-  type        = number
-}
-
-variable "lifecycle_rule_condition_with_state" {
-  description = "Match to live and/or archived objects."
-  type        = string
-}
 
 variable "lifecycle_rule_condition_matches_storage_class" {
   description = "Storage Class of objects to satisfy this condition."
@@ -115,11 +121,6 @@ variable "lifecycle_rule_condition_matches_storage_class" {
 variable "lifecycle_rule_condition_num_newer_versions" {
   description = "Relevant only for versioned objects."
   type        = number
-}
-
-variable "versioning_enabled" {
-  description = "While set to true, versioning is fully enabled for this bucket."
-  type        = bool
 }
 
 variable "cors_origin" {
