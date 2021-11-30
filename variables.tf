@@ -14,19 +14,9 @@ variable "project" {
   type        = string
 }
 
-variable "lifecycle_rule_action_type" {
-  description = "The type of the action of this Lifecycle Rule."
+variable "lifecycle_rule_condition_created_before" {
+  description = " A date in the RFC 3339 format YYYY-MM-DD."
   type        = string
-}
-
-variable "lifecycle_rule_action_storage_class" {
-  description = "The target Storage Class of objects affected by this Lifecycle Rule."
-  type        = string
-}
-
-variable "versioning_enabled" {
-  description = "While set to true, versioning is fully enabled for this bucket."
-  type        = bool
 }
 
 variable "retention_policy_retention_period" {
@@ -34,36 +24,9 @@ variable "retention_policy_retention_period" {
   type        = number
 }
 
+
 variable "logging_log_bucket" {
   description = "The bucket that will receive log objects."
-  type        = string
-}
-
-//optional variables
-variable "force_destroy" {
-  description = "When deleting a bucket, this boolean option will delete all contained objects."
-  type        = bool
-  default     = false
-}
-
-variable "storage_class" {
-  description = "The Storage Class of the new bucket."
-  type        = string
-  default     = "STANDARD"
-}
-
-variable "lifecycle_rule_condition_age" {
-  description = " Minimum age of an object in days to satisfy this condition."
-  type        = number
-}
-
-variable "lifecycle_rule_condition_with_state" {
-  description = "Match to live and/or archived objects."
-  type        = string
-}
-
-variable "lifecycle_rule_condition_created_before" {
-  description = " A date in the RFC 3339 format YYYY-MM-DD."
   type        = string
 }
 
@@ -74,7 +37,7 @@ variable "lifecycle_rule_condition_custom_time_before" {
 
 variable "lifecycle_rule_condition_days_since_custom_time" {
   description = "Days since the date set in the customTime metadata for the object."
-  type        = string
+  type        = number
 }
 
 variable "lifecycle_rule_condition_noncurrent_time_before" {
@@ -112,20 +75,65 @@ variable "encryption_default_kms_key_name" {
   type        = string
 }
 
+//optional variables
+variable "force_destroy" {
+  description = "When deleting a bucket, this boolean option will delete all contained objects."
+  type        = bool
+  default     = false
+}
+
+variable "storage_class" {
+  description = "The Storage Class of the new bucket."
+  type        = string
+  default     = "STANDARD"
+}
+
+variable "lifecycle_rule_action_type" {
+  description = "The type of the action of this Lifecycle Rule."
+  type        = string
+  default     = ""
+}
+
+variable "lifecycle_rule_action_storage_class" {
+  description = "The target Storage Class of objects affected by this Lifecycle Rule."
+  type        = string
+  default     = ""
+}
+
+variable "lifecycle_rule_condition_age" {
+  description = " Minimum age of an object in days to satisfy this condition."
+  type        = number
+  default     = 1
+}
+
+variable "lifecycle_rule_condition_with_state" {
+  description = "Match to live and/or archived objects."
+  type        = string
+  default     = "LIVE"
+}
 
 variable "lifecycle_rule_condition_matches_storage_class" {
   description = "Storage Class of objects to satisfy this condition."
   type        = list(string)
+  default     = ["STANDARD"]
 }
 
 variable "lifecycle_rule_condition_num_newer_versions" {
   description = "Relevant only for versioned objects."
   type        = number
+  default     = 1
+}
+
+variable "versioning_enabled" {
+  description = "While set to true, versioning is fully enabled for this bucket."
+  type        = bool
+  default     = false
 }
 
 variable "cors_origin" {
   description = "The list of Origins eligible to receive CORS response headers."
   type        = list(string)
+  default     = ["*"]
 }
 
 variable "cors_method" {
@@ -137,16 +145,19 @@ variable "cors_method" {
 variable "cors_max_age_seconds" {
   description = "The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses."
   type        = number
+  default     = 1
 }
 
 variable "retention_policy_is_locked" {
   description = "The bucket will be locked and permanently restrict edits to the bucket's retention policy."
   type        = bool
+  default     = false
 }
 
 variable "requester_pays" {
   description = "Enables Requester Pays on a storage bucket."
   type        = bool
+  default     = false
 }
 
 variable "uniform_bucket_level_access" {
