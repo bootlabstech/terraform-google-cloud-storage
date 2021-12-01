@@ -91,13 +91,13 @@ variable "storage_class" {
 variable "lifecycle_rule_action_type" {
   description = "The type of the action of this Lifecycle Rule."
   type        = string
-  default     = ""
+  default     = "SetStorageClass"
 }
 
 variable "lifecycle_rule_action_storage_class" {
   description = "The target Storage Class of objects affected by this Lifecycle Rule."
   type        = string
-  default     = ""
+  default     = "STANDARD"
 }
 
 variable "lifecycle_rule_condition_age" {
