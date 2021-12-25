@@ -60,10 +60,10 @@ variable "website_not_found_page" {
 #   type        = list(string)
 # }
 
-variable "labels" {
-  description = "A map of key/value label pairs to assign to the bucket."
-  type        = map(string)
-}
+# variable "labels" {
+#   description = "A map of key/value label pairs to assign to the bucket."
+#   type        = map(string)
+# }
 
 # variable "logging_log_object_prefix" {
 #   description = "The object prefix for log objects."
