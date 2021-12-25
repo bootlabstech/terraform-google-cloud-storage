@@ -14,7 +14,7 @@ variable "project" {
   type        = string
 }
 
-variable "lifecycle_rule_condition_created_before" {
+variable "lrc_created_before" {
   description = " A date in the RFC 3339 format YYYY-MM-DD."
   type        = string
 }
@@ -30,17 +30,17 @@ variable "logging_log_bucket" {
   type        = string
 }
 
-variable "lifecycle_rule_condition_custom_time_before" {
+variable "lrc_custom_time_before" {
   description = " date in the RFC 3339 format YYYY-MM-DD."
   type        = string
 }
 
-variable "lifecycle_rule_condition_days_since_custom_time" {
+variable "lrc_days_since_custom_time" {
   description = "Days since the date set in the customTime metadata for the object."
   type        = number
 }
 
-variable "lifecycle_rule_condition_noncurrent_time_before" {
+variable "lrc_noncurrent_time_before" {
   description = "Relevant only for versioned objects."
   type        = string
 }
@@ -88,37 +88,37 @@ variable "storage_class" {
   default     = "STANDARD"
 }
 
-variable "lifecycle_rule_action_type" {
+variable "lra_type" {
   description = "The type of the action of this Lifecycle Rule."
   type        = string
   default     = "SetStorageClass"
 }
 
-variable "lifecycle_rule_action_storage_class" {
+variable "lra_storage_class" {
   description = "The target Storage Class of objects affected by this Lifecycle Rule."
   type        = string
   default     = "STANDARD"
 }
 
-variable "lifecycle_rule_condition_age" {
+variable "lrc_age" {
   description = " Minimum age of an object in days to satisfy this condition."
   type        = number
   default     = 1
 }
 
-variable "lifecycle_rule_condition_with_state" {
+variable "lrc_with_state" {
   description = "Match to live and/or archived objects."
   type        = string
   default     = "LIVE"
 }
 
-variable "lifecycle_rule_condition_matches_storage_class" {
+variable "lrc_matches_storage_class" {
   description = "Storage Class of objects to satisfy this condition."
   type        = list(string)
   default     = ["STANDARD"]
 }
 
-variable "lifecycle_rule_condition_num_newer_versions" {
+variable "lrc_num_newer_versions" {
   description = "Relevant only for versioned objects."
   type        = number
   default     = 1

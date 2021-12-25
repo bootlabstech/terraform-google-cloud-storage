@@ -7,18 +7,18 @@ resource "google_storage_bucket" "storage_bucket" {
   storage_class = var.storage_class
   lifecycle_rule {
     action {
-      type          = var.lifecycle_rule_action_type
-      storage_class = var.lifecycle_rule_action_storage_class
+      type          = var.lra_type # lifecycle_rule_action
+      storage_class = var.lra_storage_class
     }
     condition {
-      age                    = var.lifecycle_rule_condition_age
-      created_before         = var.lifecycle_rule_condition_created_before
-      with_state             = var.lifecycle_rule_condition_with_state
-      matches_storage_class  = var.lifecycle_rule_condition_matches_storage_class
-      num_newer_versions     = var.lifecycle_rule_condition_num_newer_versions
-      custom_time_before     = var.lifecycle_rule_condition_custom_time_before
-      days_since_custom_time = var.lifecycle_rule_condition_days_since_custom_time
-      noncurrent_time_before = var.lifecycle_rule_condition_noncurrent_time_before
+      age                    = var.lrc_age   #lifecycle_rule_condation
+      created_before         = var.lrc_created_before
+      with_state             = var.lrc_with_state
+      matches_storage_class  = var.lrc_matches_storage_class
+      num_newer_versions     = var.lrc_num_newer_versions
+      custom_time_before     = var.lrc_custom_time_before
+      days_since_custom_time = var.lrc_days_since_custom_time
+      noncurrent_time_before = var.lrc_noncurrent_time_before
 
     }
 
