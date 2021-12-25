@@ -25,10 +25,10 @@ variable "retention_policy_retention_period" {
 }
 
 
-variable "logging_log_bucket" {
-  description = "The bucket that will receive log objects."
-  type        = string
-}
+# variable "logging_log_bucket" {
+#   description = "The bucket that will receive log objects."
+#   type        = string
+# }
 
 variable "lrc_custom_time_before" {
   description = " date in the RFC 3339 format YYYY-MM-DD."
@@ -55,25 +55,25 @@ variable "website_not_found_page" {
   type        = string
 }
 
-variable "cors_response_header" {
-  description = "The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains."
-  type        = list(string)
-}
+# variable "cors_response_header" {
+#   description = "The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains."
+#   type        = list(string)
+# }
 
 variable "labels" {
   description = "A map of key/value label pairs to assign to the bucket."
   type        = map(string)
 }
 
-variable "logging_log_object_prefix" {
-  description = "The object prefix for log objects."
-  type        = string
-}
+# variable "logging_log_object_prefix" {
+#   description = "The object prefix for log objects."
+#   type        = string
+# }
 
-variable "encryption_default_kms_key_name" {
-  description = "The id of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified."
-  type        = string
-}
+# variable "encryption_default_kms_key_name" {
+#   description = "The id of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified."
+#   type        = string
+# }
 
 //optional variables
 variable "force_destroy" {
@@ -130,23 +130,23 @@ variable "versioning_enabled" {
   default     = false
 }
 
-variable "cors_origin" {
-  description = "The list of Origins eligible to receive CORS response headers."
-  type        = list(string)
-  default     = ["*"]
-}
+# variable "cors_origin" {
+#   description = "The list of Origins eligible to receive CORS response headers."
+#   type        = list(string)
+#   default     = ["*"]
+# }
 
-variable "cors_method" {
-  description = " The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc)."
-  type        = list(string)
-  default     = ["GET", "OPTION", "post"]
-}
+# variable "cors_method" {
+#   description = " The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc)."
+#   type        = list(string)
+#   default     = ["GET", "OPTION", "post"]
+# }
 
-variable "cors_max_age_seconds" {
-  description = "The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses."
-  type        = number
-  default     = 1
-}
+# variable "cors_max_age_seconds" {
+#   description = "The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses."
+#   type        = number
+#   default     = 1
+# }
 
 variable "retention_policy_is_locked" {
   description = "The bucket will be locked and permanently restrict edits to the bucket's retention policy."
