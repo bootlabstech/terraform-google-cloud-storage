@@ -31,25 +31,24 @@ resource "google_storage_bucket" "storage_bucket" {
     not_found_page   = var.website_not_found_page
 
   }
-  cors {
-    origin          = var.cors_origin
-    method          = var.cors_method
-    response_header = var.cors_response_header
-    max_age_seconds = var.cors_max_age_seconds
-  }
+  # cors {
+  #   origin          = var.cors_origin
+  #   method          = var.cors_method
+  #   response_header = var.cors_response_header
+  #   max_age_seconds = var.cors_max_age_seconds
+  # }
   retention_policy {
     is_locked        = var.retention_policy_is_locked
     retention_period = var.retention_policy_retention_period
   }
-  labels = var.labels
-  logging {
-    log_bucket        = var.logging_log_bucket
-    log_object_prefix = var.logging_log_object_prefix
-
-  }
-  encryption {
-    default_kms_key_name = var.encryption_default_kms_key_name
-  }
+  # labels = var.labels
+  # logging {
+  #   log_bucket        = var.logging_log_bucket
+  #   log_object_prefix = var.logging_log_object_prefix
+  # }
+  # encryption {
+  #   default_kms_key_name = var.encryption_default_kms_key_name
+  # }
   requester_pays              = var.requester_pays
   uniform_bucket_level_access = var.uniform_bucket_level_access
 
