@@ -5,7 +5,43 @@ variable "name" {
 }
 
 variable "location" {
-  description = "The GCS location."
+  description = <<-EOT
+    {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data":[ "asia-east1",
+        "asia-east2",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-northeast3",
+        "asia-south1",
+        "asia-south2",
+        "asia-southeast1",
+        "asia-southeast2",
+        "australia-southeast1",
+        "australia-southeast2",
+        "europe-central2",
+        "europe-north1",
+        "europe-west1",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west6",
+        "northamerica-northeast1",
+        "northamerica-northeast2",
+        "southamerica-east1",
+        "southamerica-west1",
+        "us-central1",
+        "us-east1",
+        "us-east4",
+        "us-west1",
+        "us-west2",
+        "us-west3",
+        "us-west4"
+    ],
+   "description":"The GCS location."
+   }
+  EOT
   type        = string
 }
 
@@ -77,25 +113,69 @@ variable "website_not_found_page" {
 
 //optional variables
 variable "force_destroy" {
-  description = "When deleting a bucket, this boolean option will delete all contained objects."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "true",
+             "false"
+              ],
+   "description": "When deleting a bucket, this boolean option will delete all contained objects."
+}
+EOT
   type        = bool
   default     = false
 }
 
 variable "storage_class" {
-  description = "The Storage Class of the new bucket."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "STANDARD",
+             "MULTI_REGIONAL",
+             "REGIONAL",
+             "NEARLINE",
+             "COLDLINE",
+             "ARCHIVE"
+              ],
+   "description": "The Storage Class of the new bucket."
+   }
+EOT
   type        = string
   default     = "STANDARD"
 }
 
 variable "lra_type" {
-  description = "The type of the action of this Lifecycle Rule."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "Delete",
+             "SetStorageClass"
+              ],
+   "description": "The type of the action of this Lifecycle Rule."
+   }
+EOT
   type        = string
   default     = "SetStorageClass"
 }
 
 variable "lra_storage_class" {
-  description = "The target Storage Class of objects affected by this Lifecycle Rule."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "STANDARD",
+             "MULTI_REGIONAL",
+             "REGIONAL",
+             "NEARLINE",
+             "COLDLINE",
+             "ARCHIVE"
+              ],
+   "description": "The target Storage Class of objects affected by this Lifecycle Rule."
+   }
+EOT
   type        = string
   default     = "STANDARD"
 }
@@ -107,7 +187,17 @@ variable "lrc_age" {
 }
 
 variable "lrc_with_state" {
-  description = "Match to live and/or archived objects."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "LIVE",
+             "ARCHIVED",
+             "ANY"
+              ],
+   "description": "Match to live and/or archived objects."
+   }
+EOT
   type        = string
   default     = "LIVE"
 }
@@ -125,7 +215,16 @@ variable "lrc_num_newer_versions" {
 }
 
 variable "versioning_enabled" {
-  description = "While set to true, versioning is fully enabled for this bucket."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "TRUE",
+             "FALSE"
+              ],
+   "description": "While set to true, versioning is fully enabled for this bucket."
+   }
+EOT
   type        = bool
   default     = false
 }
@@ -149,19 +248,46 @@ variable "versioning_enabled" {
 # }
 
 variable "retention_policy_is_locked" {
-  description = "The bucket will be locked and permanently restrict edits to the bucket's retention policy."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "TRUE",
+             "FALSE"
+              ],
+   "description": "The bucket will be locked and permanently restrict edits to the bucket's retention policy."
+   }
+EOT
   type        = bool
   default     = false
 }
 
 variable "requester_pays" {
-  description = "Enables Requester Pays on a storage bucket."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "TRUE",
+             "FALSE"
+              ],
+   "description": "Enables Requester Pays on a storage bucket."
+   }
+EOT
   type        = bool
   default     = false
 }
 
 variable "uniform_bucket_level_access" {
-  description = "Enables Uniform bucket-level access access to a bucket."
+  description = <<-EOT
+  {
+   "type": "json",
+   "purpose": "autocomplete",
+   "data": [ "TRUE",
+             "FALSE"
+              ],
+   "description": "Enables Uniform bucket-level access access to a bucket."
+   }
+EOT
   type        = bool
   default     = true
 }
